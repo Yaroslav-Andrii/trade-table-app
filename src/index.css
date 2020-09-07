@@ -1,13 +1,83 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+*{
+  font-family: Tahoma, Helvetica, sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.tables-box table {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 0;
+  border-collapse: collapse;
+}
+
+.tables-box th,
+.tables-box td{
+  font-weight: normal;
+  font-size: 11px;
+  margin: 0;
+  text-align: right;
+}
+
+.tables-box th {
+  background-color: #f9f9f9;
+  height: 22px;
+}
+
+.tables-box td {
+  height: 19px;
+}
+
+.tables-box th:first-child,
+.tables-box td:first-child {
+  text-align: left;
+}
+
+.tables-box td:first-child {
+  padding: 0 0 0 13px;
+}
+
+.tables-box thead th,
+.tables-box tbody td {
+  border: 1px solid #ebebeb;
+}
+
+.tables-box tfoot {
+  border: 1px solid #ebebeb;
+  color: #666;
+}
+
+.tables-box .content {
+  margin: 0 6px;
+}
+
+.up {
+  color: blue
+}
+
+.down {
+  color: red;
+}
+
+span.i {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  margin-left: -18px;
+}
+
+.ask-up {
+  background: url("./market-watch.png?t=2") transparent no-repeat 0 0;
+}
+
+.ask-static {
+  background: url("./market-watch.png?t=2") transparent no-repeat -32px 0;
+}
+
+.ask-down {
+  background: url("./market-watch.png?t=2") transparent no-repeat -16px 0;
+}
+
+.add {
+  background: url("./market-watch.png?t=2") transparent no-repeat -48px 0;
 }
