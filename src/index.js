@@ -3,10 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import { PairsData } from './data/PairsData';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <PairsData>
+      <App />
+    </PairsData>
   </React.StrictMode>,
   document.getElementById('root')
 );
