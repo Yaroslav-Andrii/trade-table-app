@@ -1,33 +1,46 @@
-import React, { useEffect, useState, useContext, useRef } from 'react';
+import React, { useState, useContext } from 'react';
+
+/* Custom hooks */
+import { 
+  useInputInFocus, 
+  useOrderInContextMenu, 
+  useOrders
+} from '../hooks/marketTable.hooks';
+
+/* Components */
 import { Order } from './Order';
 import { ContextMenuComponent } from './ContextMenuComponent';
+
+/* Data */
 import { PairData } from '../data/pairContext';
 import { maxCombination } from '../data/pairs';
 import '../market-watch.png';
 
 export const MarketTable = () => {
-  const {setConnection, addNewPair} = useContext(PairData);
-  const [isInput, setIsInput] = useState(false);
+  /* Manage which order is in context menu */
+  const { inContext, contextMenuHandler } = useOrderInContextMenu('TR');
 
-  const {orders, setOrders} = useOrders(setConnection);
-  const {inputValue, inputForm, setInputValue} = useInputInFocus(e => setIsInput(false));
+  /* Orders pairs data controller */
+  const { setConnection, addNewPair } = useContext(PairData);
+  const { orders, setOrders } = useOrders(setConnection);
+
+  /* Input controller */
+  const [isInput, setIsInput] = useState(false);
+  const {
+    inputValue, 
+    inputForm, 
+    setInputValue
+  } = useInputInFocus(event => setIsInput(false));
   
-  const handleSubmit = e => {
-    e.preventDefault();
+  const handleSubmit = event => {
+    event.preventDefault();
+
+    /* Add new order pair */
     addNewPair(inputValue);
+
+    /* Reset input view */
     setInputValue('');
     setIsInput(false);
-  }
-
-  const [inContext, setInContext] = useState('');
-  function contextMenuHandler(e) {
-    let target = e.target;
-    
-    while (target.tagName !== 'TR') {
-      target = target.parentElement;
-    }
-    
-    setInContext(target.dataset.symbol ? target.dataset.symbol : '');
   }
  
   return (
@@ -84,52 +97,4 @@ export const MarketTable = () => {
       </ContextMenuComponent>
     </div>
   )
-}
-
-/* Local custom hooks */
-function useOrders(setConnection) {
-  const [orders, setOrders] = useState([]);
-
-  useEffect(() => {
-    setConnection(setOrders);
-  }, []);
-
-  return {orders, setOrders};
-}
-
-function useInputInFocus(blurCb) {
-  let ref = useRef();
-  const [inputValue, setInputValue] = useState('');
-
-  useEffect(() => {
-    ref.current && ref.current.focus();
-  });
-
-  useEffect(() => {
-    return () => {
-      ref = null;
-    }
-  }, [])
-
-  const handleInputChange = e => {
-    setInputValue(e.target.value);
-  }
-
-  const inputStyles = {
-    float: 'right',
-    width: '96%'
-  }
-
-  const inputForm = (
-    <input 
-      ref={ref} 
-      onBlur={blurCb} 
-      style={inputStyles} 
-      type="text" 
-      value={inputValue} 
-      onChange={handleInputChange}
-    />
-  )
-
-  return {inputValue, inputForm, setInputValue};
 }

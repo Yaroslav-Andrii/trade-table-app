@@ -1,4 +1,4 @@
-export const pairsKyes = [
+export const pairsKeys = [
   'AUD',	
   'BGN',	
   'BRL',	
@@ -50,10 +50,11 @@ export const defaultPairs = [
   "AUDCAD",
 ];
 
-export const maxCombination = countCombinations(pairsKyes.length, 2);
+export const maxCombination = countCombinations(pairsKeys.length, 2);
 
+/* Helper functions */
 function countCombinations(n, k) {
-  return ( factorial(n)/(factorial(k) * factorial(n - k)) ) * 2;
+  return ( factorial(n) / (factorial(k) * factorial(n - k)) ) * 2;
 }
 
 function factorial(n) {

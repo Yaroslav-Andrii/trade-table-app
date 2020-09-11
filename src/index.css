@@ -110,3 +110,8 @@ tfoot span.i {
 .react-contextmenu-item:not(:last-child) {
   border-bottom: 1px solid #a9a9a9;
 }
+
+.tables-box input:focus {
+  float: right;
+  width: 96%;
+}

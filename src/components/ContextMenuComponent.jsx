@@ -2,9 +2,14 @@ import React, { useContext } from 'react';
 import { ContextMenu, MenuItem, ContextMenuTrigger } from "react-contextmenu";
 import { PairData } from '../data/pairContext';
 
-export const ContextMenuComponent = ({children, contextElement, inputOnFocus, ordersListDispatcher}) => {
+export const ContextMenuComponent = ({ 
+  children, 
+  contextElement, 
+  inputOnFocus, 
+  ordersListDispatcher 
+}) => {
 
-  const {removePair} = useContext(PairData);
+  const { removePair } = useContext(PairData);
 
   function handleClick(e, data) {
     switch (data.type) {
@@ -27,10 +32,10 @@ export const ContextMenuComponent = ({children, contextElement, inputOnFocus, or
       </ContextMenuTrigger>
 
       <ContextMenu id="same_unique_identifier">
-        <MenuItem data={{type: 'add', contextElement}} onClick={handleClick}>
+        <MenuItem data={{ type: 'add', contextElement }} onClick={handleClick}>
           Add new order
         </MenuItem>
-        <MenuItem data={{type: 'rm', contextElement}} onClick={handleClick}>
+        <MenuItem data={{ type: 'rm', contextElement }} onClick={handleClick}>
           Hide order
         </MenuItem>
       </ContextMenu>

@@ -4,9 +4,9 @@ import { ADD_PAIR, REMOVE_PAIR, SET_API_KEY } from './type';
 import { pairsReducer, getInitialState } from './pairsReducer';
 import LiveWebSocket from './LiveWebSocket';
 import { wscb, classcb } from './wsActions';
-import { pairsKyes } from './pairs';
+import { pairsKeys } from './pairs';
 
-export const PairsData = ({children}) => {
+export const PairsData = ({ children }) => {
   const [data, dispatch] = useReducer(pairsReducer, getInitialState());
   const connection = useRef();
 
@@ -24,59 +24,71 @@ export const PairsData = ({children}) => {
         `wss://api.xchangeapi.com/websocket/live?api-key=${data.apiKey}`, 
         wscb, 
         classcb, 
-        {dispatcher}
+        { dispatcher }
       );
 
     connection.current.start(data.pairs);
   }
 
   const addNewPair = pairStr => {
-    pairStr = pairStr.toUpperCase().trim();
+    const cleanPairStr = pairStr.toUpperCase().trim();
+    
+    const firstKey = cleanPairStr.slice(0, 3);
+    const secondKey =  cleanPairStr.slice(3);
 
+    /* Pair string validation */
     if (pairStr.length !== 6) {
       console.log('String is not correct');
       return;
     }
 
-    if ( !pairsKyes.includes(pairStr.slice(0, 3)) || !pairsKyes.includes(pairStr.slice(3)) ) {
+    if (!pairsKeys.includes(firstKey) || !pairsKeys.includes(secondKey)) {
       console.log('String is not correct');
       return;
     }
 
-    if ( pairStr.slice(0, 3) === pairStr.slice(3) ) {
+    if ( firstKey === secondKey ) {
       console.log('String is not correct');
       return;
     }
 
-    if ( data.pairs.includes(pairStr) ) {
+    if ( data.pairs.includes(cleanPairStr) ) {
       console.log('The pair already exist');
       return;
     }
+    /* End of pair string validation */
 
-    const pairsArr = JSON.parse(localStorage.getItem('pairs'));
+    const pairsArr = JSON.parse( localStorage.getItem('pairs') );
 
-    pairsArr.push(pairStr);
+    /* Update localStorage */
+    pairsArr.push(cleanPairStr);
     localStorage.setItem('pairs', JSON.stringify(pairsArr));
 
+    /* Restart web socket connection with new paris list */
     connection.current.wsClose();
     connection.current.start(pairsArr);
 
+    /* Dispatch action to pairsReducer */
     dispatch({
       type: ADD_PAIR,
-      payload: pairStr
+      payload: cleanPairStr
     });
   }
 
   const removePair = (pairSymbol, ordersListDispatcher) => {
-    const pairsArr = JSON.parse(localStorage.getItem('pairs')).filter(item => item !== pairSymbol);
-    localStorage.setItem('pairs', JSON.stringify(pairsArr));
+    const parisJson = localStorage.getItem('pairs');
+    const newPairsArr = JSON.parse(parisJson).filter(i => i !== pairSymbol);
 
-    connection.current.wsClose();
+    /* Update localStorage */
+    localStorage.setItem('pairs', JSON.stringify(newPairsArr));
 
     ordersListDispatcher(state => state.filter(i => i.name !== pairSymbol));
 
-    connection.current.start(pairsArr);
+    /* Restart web socket connection with new paris list */
+    connection.current.wsClose();
+    connection.current.start(newPairsArr);
 
+    /* Dispatch action to pairsReducer */
     dispatch({
       type: REMOVE_PAIR,
       payload: pairSymbol
