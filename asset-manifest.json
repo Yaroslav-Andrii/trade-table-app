@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/trade-table-app/static/css/main.0a56487e.chunk.css",
-    "main.js": "/trade-table-app/static/js/main.715e38dc.chunk.js",
-    "main.js.map": "/trade-table-app/static/js/main.715e38dc.chunk.js.map",
+    "main.css": "/trade-table-app/static/css/main.8addc9e6.chunk.css",
+    "main.js": "/trade-table-app/static/js/main.e76b74f8.chunk.js",
+    "main.js.map": "/trade-table-app/static/js/main.e76b74f8.chunk.js.map",
     "runtime-main.js": "/trade-table-app/static/js/runtime-main.ce6c6ef8.js",
     "runtime-main.js.map": "/trade-table-app/static/js/runtime-main.ce6c6ef8.js.map",
     "static/js/2.faa454c0.chunk.js": "/trade-table-app/static/js/2.faa454c0.chunk.js",
     "static/js/2.faa454c0.chunk.js.map": "/trade-table-app/static/js/2.faa454c0.chunk.js.map",
     "index.html": "/trade-table-app/index.html",
-    "precache-manifest.330d89c5a629f137543b30a163e5e9f2.js": "/trade-table-app/precache-manifest.330d89c5a629f137543b30a163e5e9f2.js",
+    "precache-manifest.bffc1b3454198035e054a5949a3dc973.js": "/trade-table-app/precache-manifest.bffc1b3454198035e054a5949a3dc973.js",
     "service-worker.js": "/trade-table-app/service-worker.js",
-    "static/css/main.0a56487e.chunk.css.map": "/trade-table-app/static/css/main.0a56487e.chunk.css.map",
+    "static/css/main.8addc9e6.chunk.css.map": "/trade-table-app/static/css/main.8addc9e6.chunk.css.map",
     "static/js/2.faa454c0.chunk.js.LICENSE.txt": "/trade-table-app/static/js/2.faa454c0.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.ce6c6ef8.js",
     "static/js/2.faa454c0.chunk.js",
-    "static/css/main.0a56487e.chunk.css",
-    "static/js/main.715e38dc.chunk.js"
+    "static/css/main.8addc9e6.chunk.css",
+    "static/js/main.e76b74f8.chunk.js"
   ]
 }

@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "5fabb1073a1efb19b8973fc41627d5b2",
+    "revision": "473d02e5a7c4cf4024beb8a134455e09",
     "url": "/trade-table-app/index.html"
   },
   {
-    "revision": "795b722e462f26f6d7fc",
-    "url": "/trade-table-app/static/css/main.0a56487e.chunk.css"
+    "revision": "3a06f8f1a624ee0ae752",
+    "url": "/trade-table-app/static/css/main.8addc9e6.chunk.css"
   },
   {
     "revision": "bb951926bf909ca81e86",
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/trade-table-app/static/js/2.faa454c0.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "795b722e462f26f6d7fc",
-    "url": "/trade-table-app/static/js/main.715e38dc.chunk.js"
+    "revision": "3a06f8f1a624ee0ae752",
+    "url": "/trade-table-app/static/js/main.e76b74f8.chunk.js"
   },
   {
     "revision": "cb481d3d948279ba4648",
